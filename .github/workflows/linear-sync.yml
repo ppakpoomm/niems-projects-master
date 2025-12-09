@@ -16,6 +16,8 @@ on:
       - 'scripts/**'
       - '.github/workflows/**'
 
+permissions:
+  contents: write
 jobs:
   sync-linear-data:
     runs-on: ubuntu-latest

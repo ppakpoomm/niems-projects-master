@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIEMS Projects Master 2569 Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      padding: 20px; 
+      background: #f5f5f5; 
+    }
+    .container { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      background: white; 
+      padding: 30px; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    }
+    h1 { color: #2c3e50; margin-bottom: 10px; }
+    .subtitle { color: #7f8c8d; margin-bottom: 30px; }
+    .filters { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 15px; 
+      margin-bottom: 30px; 
+    }
+    .filter-group { display: flex; flex-direction: column; }
+    label { 
+      font-weight: 600; 
+      margin-bottom: 5px; 
+      color: #34495e; 
+      font-size: 14px; 
+    }
+    select { 
+      padding: 10px; 
+      border: 1px solid #ddd; 
+      border-radius: 4px; 
+      font-size: 14px; 
+    }
+    .summary { 
+      background: #ecf0f1; 
+      padding: 20px; 
+      border-radius: 6px; 
+      margin-bottom: 30px; 
+    }
+    .summary h2 { 
+      font-size: 18px; 
+      margin-bottom: 15px; 
+      color: #2c3e50; 
+    }
+    .stats { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 15px; 
+    }
+    .stat-card { 
+      background: white; 
+      padding: 15px; 
+      border-radius: 4px; 
+      border-left: 4px solid #3498db; 
+    }
+    .stat-card .label { 
+      color: #7f8c8d; 
+      font-size: 12px; 
+      text-transform: uppercase; 
+    }
+    .stat-card .value { 
+      font-size: 24px; 
+      font-weight: bold; 
+      color: #2c3e50; 
+      margin-top: 5px; 
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: #34495e; color: white; }
+    th, td { 
+      padding: 12px; 
+      text-align: left; 
+      border-bottom: 1px solid #ddd; 
+    }
+    th { font-weight: 600; font-size: 13px; }
+    td { font-size: 14px; }
+    tbody tr:hover { background: #f8f9fa; }
+    .loading { 
+      text-align: center; 
+      padding: 40px; 
+      color: #7f8c8d; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NIEMS Projects Master 2569</h1>
+    <p class="subtitle">Dashboard สำหรับติดตามโครงการ ปีงบประมาณ 2569</p>
+
+    <section class="filters">
+      <div class="filter-group">
+        <label for="programFilter">แผนงาน (Program)</label>
+        <select id="programFilter">
+          <option value="">-- ทั้งหมด --</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="deputyFilter">รองเลขาธิการ</label>
+        <select id="deputyFilter">
+          <option value="">-- ทั้งหมด --</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="section15Filter">มาตรา 15 (หลัก)</label>
+        <select id="section15Filter">
+          <option value="">-- ทั้งหมด --</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="fundFilter">แหล่งงบประมาณ</label>
+        <select id="fundFilter">
+          <option value="">-- ทั้งหมด --</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="summary">
+      <h2>สรุปภาพรวม</h2>
+      <div id="summaryContent" class="loading">กำลังโหลดข้อมูล...</div>
+    </section>
+
+    <section>
+      <h2 style="margin-bottom: 15px;">ตารางโครงการ</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>รหัสโครงการ</th>
+              <th>ชื่อโครงการ</th>
+              <th>ปีงบ</th>
+              <th>แผนงาน</th>
+              <th>สำนักเจ้าภาพ</th>
+              <th>รองฯ</th>
+              <th>ม.15</th>
+              <th>แหล่งงบ</th>
+            </tr>
+          </thead>
+          <tbody id="projectsBody">
+            <tr><td colspan="8" style="text-align: center; padding: 40px;">กำลังโหลดข้อมูล...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="./assets/main.js"></script>
+</body>
+</html>
